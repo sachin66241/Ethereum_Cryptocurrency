@@ -537,7 +537,7 @@ async function connect(){
    if (typeof web3 !== 'undefined') {
              await ethereum.enable();
              web3 = new Web3(web3.currentProvider);
-             console.log(":sammmmm",web3)
+             console.log("web3 activated:",web3)
    }
     else {
         console.log('No web3? You should consider trying MetaMask!');
@@ -550,12 +550,12 @@ function Transfer(){
 
         let contract =  web3.eth.contract(minABI).at(contractAddres);
 
-        console.log("xontract on",contract)
+        console.log("contract activted:",contract)
         var addr = document.getElementById("saddr").value
         var value =document.getElementById("samt").value
         contract.transfer(addr,value,(err,res)=>{
             if(res){
-                console.log("im on",res);
+                console.log("transaction completed:",res);
                 var transferEvent = contract.Transfer();
 
                 transferEvent.watch(function(error, result){
@@ -564,7 +564,7 @@ function Transfer(){
 
             }
             else{
-                console.log("myerr",err);
+                console.log("ERROR:",err);
             }
             
         });
@@ -574,21 +574,21 @@ function Transfer(){
 
 function Balance(){
         var addr = document.getElementById("address").value
-        console.log("on the balance",addr)
+        console.log("ADDRESS:",addr)
 
         let contract =  web3.eth.contract(minABI).at(contractAddres);
 
-        console.log("xontract on",contract)
+        console.log("contract on:",contract)
         // var addr ="0x8a4794204922f90670E76ed3d12AB57755A2E50a"
 
         contract.balanceOf(addr,(err,res)=>{
             if(res){
-                console.log("my",res.c[0]);
+                console.log("result:",res.c[0]);
                 var bal = res.c[0];
                 document.getElementById('demo').innerHTML = bal;
             }
             else{
-                console.log("myerr",err);
+                console.log("Error",err);
             }
             
         });
