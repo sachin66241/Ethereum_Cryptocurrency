@@ -109,7 +109,7 @@ contract GMT is ERC20Interface, Owned {
       /* approve() allowances */
     mapping (address => mapping (address => uint)) allowed;
 
-    event Burn(address indexed from, uint256 value);
+  
 
     
 
