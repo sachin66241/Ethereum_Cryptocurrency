@@ -228,11 +228,6 @@ contract GMT is ERC20Interface, Owned {
 
 
     function approve(address _spender, uint _value) public  returns (bool success) {
-        // To change the approve amount you first have to reduce the addresses`
-        //  allowance to zero by calling `approve(_spender, 0)` if it is not
-        //  already 0 to mitigate the race condition described here:
-    
-        require((_value == 0) || (allowed[msg.sender][_spender] == 0));
 
         allowed[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
